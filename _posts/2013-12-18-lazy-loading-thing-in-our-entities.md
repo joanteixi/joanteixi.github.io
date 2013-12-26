@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lazy loading things in our entities
+title: Lazy loading things in our entities with Doctrine events
 cover: lazy-loading.jpg
 date:   2013-12-19 00:10:00
 categories: posts
@@ -8,9 +8,9 @@ categories: posts
 
 ## How lazy load things into our entities using the on load event.
 
-In onfan.com we use Redis and Mysql; in Redis we store among other things, differents types of counters. When an object is created (one user p.ex) we want to access to his counters in Redis. One way could be create a class  that manage objects of this type (user) and call this as a service to inject the values of Redis into this object, so Twig (or whatever) could get the counters calling some "getCounters" or "getLikes" mehtod.
+In <a href="http://www.onfan.com">onfan.com</a> we use Redis and mysql; in Redis we store among other things, differents types of counters. When an object is created (object user p.ex) we want to access to his counters that we store in Redis. One way could be create a class that manage objects of this type (user) and call this as a service to inject the values of Redis into this object, so Twig (or whatever) could get the counters calling some "getCounters" or "getLikes" mehtod.
 
-Other way more interesting but i'm not sure if more clean and efficient, is add a listener that is called on 'onLoad' event (from Doctrine) and populate some property with the counter using a Clousure, so the function will be called only when it was necessary... let's see an example.
+Other way more interesting is add a listener that is called on 'onLoad' event (from Doctrine) and populate some property with the counter using a Clousure, so the function will be called only when it was necessary... let's see an example.
 
 Imagine a classic user class with lots or properties...
 
