@@ -286,3 +286,9 @@ a:hover {
   font-size: 0.95em;
   color: #777;
 }
+
+
+#disqus_thread {
+	max-width: 725px;
+	margin-top: 50px
+}

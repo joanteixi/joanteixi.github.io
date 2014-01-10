@@ -16,16 +16,16 @@ Imagine a classic user class with lots or properties...
 
 {% gist joanteixi/8014610 %}
 
-Every time that user object is created,  Doctrine dispatch onLoad event. We can listen to this event  with a listener that incorporates Redis service.
+Every time that user object is created,  Doctrine dispatch onLoad event. We can listen to this event  with a listener that has injected the Redis service.
 
 {% gist joanteixi/58e6c280d117773f2126 %}
 
-So, every time that we do something like:
+So, every time we get a Venue entity and call getLikes() method, the REDIS values are called and injected into our Venue instance. 
 
     $venue = $em->getRepository('CoreBundle:Venue')->find(1);
+    $venue->getLikes() //out counter is injected. 
 
-When we call :
 
-    $venue->getLikes(), the REDIS instance is called and injected into Venue object.
+That's all! Hope will help
 
 
