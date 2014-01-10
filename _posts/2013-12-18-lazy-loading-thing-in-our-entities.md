@@ -27,3 +27,5 @@ So, every time that we do something like:
 When we call :
 
     $venue->getLikes(), the REDIS instance is called and injected into Venue object.
+
+
